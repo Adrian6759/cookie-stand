@@ -75,7 +75,7 @@ let dubai = {
     let cookieHourlyList = document.getElementById('dubai');
     for (let j = 0; j < shopHours.length; j++) {
       const listItems = document.createElement('li');
-      listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies `
+      listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies `;
       cookieHourlyList.appendChild(listItems);
     }
   }
