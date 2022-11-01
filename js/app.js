@@ -17,6 +17,7 @@ let seattle ={
       let customerNumber = randomCustomer(this.minCustomers, this.maxCustomers);
       let cookieNumber = Math.round(customerNumber * this.avgCookiesPerCust);
       this.hourlyCookies.push(cookieNumber);
+      this.totalCookies += cookieNumber;
     }
   },
   render(){
@@ -26,6 +27,9 @@ let seattle ={
       listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies`;
       cookieHourlyList.appendChild(listItems);
     }
+    const total = document.createElement('li');
+    total.textContent = `total: ${this.totalCookies}`;
+    cookieHourlyList.appendChild(total);
   }
 
 };
@@ -37,21 +41,26 @@ let tokyo = {
   minCustomers:3,
   maxCustomers:24,
   avgCookiesPerCust:1.2,
+  totalCookies:0,
   hourlyCookies:[],
   getHourlyCookies: function() {
-    for (let j=0; j < shopHours.length; j++){
+    for (let i=0; i < shopHours.length; i++){
       let customerNumber = randomCustomer(this.minCustomers, this.maxCustomers);
       let cookieNumber = Math.round(customerNumber * this.avgCookiesPerCust);
       this.hourlyCookies.push(cookieNumber);
+      this.totalCookies += cookieNumber;
     }
   },
-  render() {
+  render(){
     let cookieHourlyList = document.getElementById('tokyo');
     for (let j = 0; j < shopHours.length; j++){
       const listItems = document.createElement('li');
       listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies`;
       cookieHourlyList.appendChild(listItems);
     }
+    const total = document.createElement('li');
+    total.textContent = `total: ${this.totalCookies}`;
+    cookieHourlyList.appendChild(total);
   }
 };
 tokyo.getHourlyCookies();
@@ -62,12 +71,14 @@ let dubai = {
   minCustomers:11,
   maxCustomers:38,
   avgCookiesPerCust:3.7,
+  totalCookies:0,
   hourlyCookies:[],
   gethourlyCookies: function() {
-    for (let k=0; k < shopHours.length; k++){
+    for (let i=0; i < shopHours.length; i++){
       let customerNumber = randomCustomer(this.minCustomers, this.maxCustomers);
       let cookieNumber = Math.round(customerNumber * this.avgCookiesPerCust);
       this.hourlyCookies.push(cookieNumber);
+      this.totalCookies += cookieNumber;
     }
   },
 
@@ -78,6 +89,9 @@ let dubai = {
       listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies `;
       cookieHourlyList.appendChild(listItems);
     }
+    const total = document.createElement('li');
+    total.textContent = `total: ${this.totalCookies}`;
+    cookieHourlyList.append(total);
   }
 };
 dubai.gethourlyCookies();
@@ -88,13 +102,15 @@ let paris = {
   minCustomers:20,
   maxCustomers:38,
   avgCookiesPerCust:2.3,
+  totalCookies:0,
   hourlyCookies:[],
   gethourlyCookies: function() {
-    for (let l=0; l < shopHours.length; l++) {
+    for (let i=0; i < shopHours.length; i++) {
       let customerNumber = randomCustomer(this.minCustomers, this.maxCustomers);
       let cookieNumber = Math.round(customerNumber *
         this.avgCookiesPerCust);
       this.hourlyCookies.push(cookieNumber);
+      this.totalCookies += cookieNumber;
     }
   },
 
@@ -105,7 +121,9 @@ let paris = {
       listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies`;
       cookieHourlyList.appendChild(listItems);
     }
-
+    const total = document.createElement('li');
+    total.textContent = `total: ${this.totalCookies}`;
+    cookieHourlyList.appendChild(total);
   }
 
 };
@@ -117,13 +135,15 @@ let lima = {
   minCustomers:2,
   maxCustomers:16,
   avgCookiesPerCust:4.6,
+  totalCookies:0,
   hourlyCookies:[],
   gethourlyCookies: function() {
-    for (let m=0; m < shopHours.length; m++) {
+    for (let i=0; i < shopHours.length; i++) {
       let customerNumber = randomCustomer(this.minCustomers, this.avgCookiesPerCust,this.maxCustomers);
       let cookieNumber = Math.round(customerNumber *
         this.avgCookiesPerCust);
       this.hourlyCookies.push(cookieNumber);
+      this.totalCookies += cookieNumber;
     }
   },
   render () {
@@ -131,9 +151,11 @@ let lima = {
     for (let j = 0; j < shopHours.length; j++) {
       const listItems = document.createElement('li');
       listItems.textContent = `${shopHours[j]}: ${this.hourlyCookies[j]} cookies`;
-      cookieHourlyList.appendChild(listItems); 
+      cookieHourlyList.appendChild(listItems);
     }
-
+    const total = document.createElement('li');
+    total.textContent = `total: ${this.totalCookies}`;
+    cookieHourlyList.appendChild(total);
   }
 };
 lima.gethourlyCookies();
