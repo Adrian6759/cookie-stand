@@ -1,0 +1,29 @@
+body {
+  background-color: aquamarine;
+  font-family: 'Noto Sans Georgian', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Work Sans', sans-serif;
+}
+table {
+  background-color: slategray;
+  color: aliceblue;
+  font-family: 'Open Sans', sans-serif;
+font-family: 'Work Sans', sans-serif;
+
+}
+
+td {
+  border: 3px solid black;
+}
+
+tfoot {
+  border:  3px solid black;
+}
+
+th {
+  border:  3px solid black;
+}
+header {
+  font-family: 'Work Sans', sans-serif;
+}
+ 

@@ -16,3 +16,14 @@ footer {
   background-color: brown;
   margin-top: 20px;
 }
+
+nav img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 200px;
+  width: 200px;
+ margin: auto;
+ margin-left: auto;
+ margin-right: auto;
+}

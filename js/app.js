@@ -3,7 +3,7 @@
 // #pragma: Global Variables
 
 let shopHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
-let allShops = [];
+Shop.allShops = [];
 
 // #pragma: Object Literals
 
@@ -16,7 +16,7 @@ function Shop(city, minCustomers, maxCustomers, avgCookiesPerCust){
   this.avgCookiesPerCust = avgCookiesPerCust;
   this.totalCookies = 0;
   this.hourlyCookies = [];
-  allShops.push(this);
+  Shop.allShops.push(this);
 }
 
 
@@ -31,7 +31,6 @@ Shop.prototype.getHourlyCookies = function() {
   }
 };
 let cookieHourlyList = document.getElementById('table');
-//  let allHours = document.getElementById('tr');
 Shop.prototype.render = function() {
   this.getHourlyCookies();
   let tableRow = document.createElement('tr');
@@ -67,61 +66,31 @@ function tableHeader() {
   totalsSpot.textContent = 'Daily Location Total';
   tableHeadRow.appendChild(totalsSpot);
 }
-tableHeader();
 
+tableHeader();
 
 function tableFooter() {
   let tableFoot = document.getElementById('table');
   let tableFootRow = document.createElement('tr');
   tableFoot.appendChild(tableFootRow);
-  let totals = document.createElement('tfoot');
+  let totals = document.createElement('th');
   totals.textContent = 'Totals';
   tableFoot.appendChild(totals);
+  let grandTotalCookies = 0;
+  for (let i = 0; i < shopHours.length; i++) {
+    let totalHourlyCookies = 0;
+    for (let j = 0; j < Shop.allShops.length; j++) {
+      totalHourlyCookies += Shop.allShops[j].hourlyCookies[i];
+      grandTotalCookies += Shop.allShops[j].hourlyCookies[i];
+    }
+    let totals1 = document.createElement('th');
+    totals1.textContent = totalHourlyCookies;
+    tableFoot.appendChild(totals1);
+  }
+  let totals2 = document.createElement('th');
+  totals2.textContent = grandTotalCookies;
+  tableFoot.appendChild(totals2);
 }
-tableFooter();
-
-
-
-
-// function tableFooter() {
-//   let tableFoot = document.getElementById('table');
-//   let tableFootRow = document.createElement('tr');
-//   tableFoot.appendChild(tableFootRow);
-//   let totals = document.createElement('tfoot');
-//   totals.textContent = 'Totals';
-//   tableFoot.appendChild(totals);
-//   let grandTotal = 0;
-//   for (let i = 0; i < hourlyCookies.length; i++){
-//     let allHourlyCookies = 0;
-//     for (let j = 0; j < allShops.length; j++){
-//       allHourlyCookies += allShops[j].shopHours[i];
-//       grandTotal += allShops[j].shopHours[i];
-//     }
-//     let tableFoot1 = document.createElement('th');
-//     tableFoot1.textContent = allHourlyCookies;
-//     tableFootRow.appendChild(tableFoot1);
-//   }
-//   let tableFoot1 = document.createElement('th');
-//   tableFoot1.textContent = grandTotal;
-//   tableFoot.appendChild(tableFoot1);
-//   tableFoot.appendChild(tableFootRow);
-
-//   let tableFoot = document.getElementById('table');
-//   const tableFootRow = document.createElement('tr');
-//   let tableHeader = document.createElement('th');
-//   let totals = document.createElement('tfoot');
-//   tableHeader.textContent = 'Totals';
-//   tableFoot.appendChild(totals);
-//   tableFootRow.appendChild(tableHeader);
-//   let grandTotal = 0;
-// for (let i = 0; i < hourlyCookies.length; i++){
-//   let allHourlyCookies = 0;
-//   for (let j = 0; j < allShops.length; j++){
-//     allHourlyCookies += allShops[j].shopHours[i];
-//     grandTotal += allShops[j].shopHours[i];
-//     }
-
-
 
 //Create Object Using Constructor
 let seattle = new Shop('seattle',23, 65, 6.3);
@@ -129,7 +98,6 @@ let tokyo = new Shop('tokyo',3, 24, 1.2);
 let dubai = new Shop('dubai', 11, 38, 3.7);
 let paris = new Shop('paris', 20, 38, 2.3);
 let lima = new Shop('lima', 2, 16, 4.6);
-console.log(allShops);
 // tableFooter();
 // #pragma: Helper Functions - Utilities
 //Grabbed from MDN Docs
@@ -137,8 +105,11 @@ function randomCustomer(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers +1) + minCustomers);
 }
 
+
 seattle.render();
 tokyo.render();
 dubai.render();
 paris.render();
 lima.render();
+
+tableFooter();
