@@ -26,4 +26,13 @@ th {
 header {
   font-family: 'Work Sans', sans-serif;
 }
+
+form {
+  border: 10px solid maroon;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  background-color: violet;
+}
  
