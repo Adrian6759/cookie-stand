@@ -3,10 +3,12 @@ body {
   font-family: 'Noto Sans Georgian', sans-serif;
 font-family: 'Open Sans', sans-serif;
 font-family: 'Work Sans', sans-serif;
+color: maroon;
 }
 table {
   background-color: slategray;
   color: aliceblue;
+  border-collapse: collapse;
   font-family: 'Open Sans', sans-serif;
 font-family: 'Work Sans', sans-serif;
 
@@ -29,10 +31,24 @@ header {
 
 form {
   border: 10px solid maroon;
+  padding: 5px;
 }
 fieldset {
   display: flex;
   flex-direction: column;
-  background-color: violet;
+  
+  background-color: maroon;
+  color:antiquewhite;
+  margin: 20px;
+  padding: 20px;
+
+}
+
+button {
+  background-color: salmon;
+}
+
+form label {
+  color: rgba(29, 246, 246, 0.59);
 }
  

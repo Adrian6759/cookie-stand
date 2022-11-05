@@ -6,6 +6,8 @@ body {
 nav ul {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
   
 
@@ -27,3 +29,6 @@ nav img {
  margin-left: auto;
  margin-right: auto;
 }
+
+
+

@@ -64,12 +64,12 @@ function tableHeader() {
   tableHeadRow.appendChild(totalsSpot);
 }
 
-tableHeader();
+
 
 function tableFooter() {
   let tableFoot = document.getElementById('table');
   let tableFootRow = document.createElement('tr');
-  tableFootRow.id = 'tableRow';
+  tableFootRow.id = 'tableRow1';
   tableFoot.appendChild(tableFootRow);
   let totals = document.createElement('td');
   totals.textContent = 'Totals';
@@ -90,18 +90,21 @@ function tableFooter() {
   tableFoot.appendChild(totals2);
 }
 
+
+
 //Create Object Using Constructor
 let seattle = new Shop('seattle',23, 65, 6.3);
 let tokyo = new Shop('tokyo',3, 24, 1.2);
 let dubai = new Shop('dubai', 11, 38, 3.7);
 let paris = new Shop('paris', 20, 38, 2.3);
 let lima = new Shop('lima', 2, 16, 4.6);
-// tableFooter();
+
 // #pragma: Helper Functions - Utilities
 //Grabbed from MDN Docs
 function randomCustomer(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers +1) + minCustomers);
 }
+tableHeader();
 
 seattle.render();
 tokyo.render();
@@ -114,20 +117,18 @@ tableFooter();
 //Step 3: Define our Callback
 function handleSubmit(event) {
   event.preventDefault();
+
   let city = event.target.city.value;
-  console.log(city);
+
   let minCustomers = event.target.minCustomers.value;
   let maxCustomers = event.target.maxCustomers.value;
   let avgCookiesPerCust = event.target.avgCookiesPerCust.value;
   let newStore = new Shop(city, minCustomers, maxCustomers, avgCookiesPerCust);
-  let deleteRow = document.getElementById('tableRow');
-  console.log(deleteRow);
-  deleteRow.remove();
-
+  document.getElementById('tableRow1').remove();
   newStore.render();
+  myForm.reset();
   tableFooter();
 
-  myForm.reset();
 }
 //Step 2 Attach Event Listener: (type of event, callback function)
 myForm.addEventListener('submit', handleSubmit);
