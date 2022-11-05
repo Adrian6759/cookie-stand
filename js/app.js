@@ -5,8 +5,7 @@
 let shopHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 Shop.allShops = [];
 
-// #pragma: Object Literals
-
+let myForm = document.getElementById('newStore');
 
 //Constructor
 function Shop(city, minCustomers, maxCustomers, avgCookiesPerCust){
@@ -18,8 +17,6 @@ function Shop(city, minCustomers, maxCustomers, avgCookiesPerCust){
   this.hourlyCookies = [];
   Shop.allShops.push(this);
 }
-
-
 
 //Prototype
 Shop.prototype.getHourlyCookies = function() {
@@ -67,13 +64,14 @@ function tableHeader() {
   tableHeadRow.appendChild(totalsSpot);
 }
 
-tableHeader();
+
 
 function tableFooter() {
   let tableFoot = document.getElementById('table');
   let tableFootRow = document.createElement('tr');
+  tableFootRow.id = 'tableRow1';
   tableFoot.appendChild(tableFootRow);
-  let totals = document.createElement('th');
+  let totals = document.createElement('td');
   totals.textContent = 'Totals';
   tableFoot.appendChild(totals);
   let grandTotalCookies = 0;
@@ -92,19 +90,21 @@ function tableFooter() {
   tableFoot.appendChild(totals2);
 }
 
+
+
 //Create Object Using Constructor
 let seattle = new Shop('seattle',23, 65, 6.3);
 let tokyo = new Shop('tokyo',3, 24, 1.2);
 let dubai = new Shop('dubai', 11, 38, 3.7);
 let paris = new Shop('paris', 20, 38, 2.3);
 let lima = new Shop('lima', 2, 16, 4.6);
-// tableFooter();
+
 // #pragma: Helper Functions - Utilities
 //Grabbed from MDN Docs
 function randomCustomer(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers +1) + minCustomers);
 }
-
+tableHeader();
 
 seattle.render();
 tokyo.render();
@@ -113,3 +113,22 @@ paris.render();
 lima.render();
 
 tableFooter();
+
+//Step 3: Define our Callback
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let city = event.target.city.value;
+
+  let minCustomers = event.target.minCustomers.value;
+  let maxCustomers = event.target.maxCustomers.value;
+  let avgCookiesPerCust = event.target.avgCookiesPerCust.value;
+  let newStore = new Shop(city, minCustomers, maxCustomers, avgCookiesPerCust);
+  document.getElementById('tableRow1').remove();
+  newStore.render();
+  myForm.reset();
+  tableFooter();
+
+}
+//Step 2 Attach Event Listener: (type of event, callback function)
+myForm.addEventListener('submit', handleSubmit);

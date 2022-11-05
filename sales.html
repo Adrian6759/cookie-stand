@@ -8,17 +8,35 @@
   <link rel="stylesheet" href="./sales.css">
 </head>
 <body>
+  <a href="index.html">Main</a>
   <header>
     <h1>Salmon Cookies</h1>
   </header>
   <main>
-
-  <table id="table">
+    <table id="table"></table>
+  <h3>New Storefront</h3>
+  
+  <form id="newStore">
+    <fieldset>
+  <legend></legend>
+  <label for="city">City</label>
+  <input id="city" type="text" name="city">
+  
+  <label for="minCustomers">Minimum Customers(Number)</label>
+  <input id="minCustomers" type="text" name="minCustomers">
+  
+  <label for="maxCustomers">Max Customers(Number)</label>
+  <input id="maxCustomers" type="text" name="maxCustomers">
+  
+  <label for="avgCookiesPerCust">Average Cookies Per Customer(Number)</label>
+  <input id="avgCookiesPerCust" type="text" name="avgCookiesPerCust">
+  
+  
+    </fieldset>
+    <button type="Submit">Submit</button>
+  </form>
     
-
-  </table>
  
-  <a href="index.html">Main</a>
 
 </main>
   <script src="js/app.js"> </script>
