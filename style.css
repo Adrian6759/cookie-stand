@@ -10,6 +10,13 @@ nav ul {
   justify-content: space-between;
 }
   
+header {
+  background-color: brown;
+}
+
+header a {
+  margin-left: 1300px;
+}
 
 footer {
   display: flex;
@@ -30,5 +37,68 @@ nav img {
  margin-right: auto;
 }
 
+main {
+  background-color: slategray;
+  margin-left: 400px;
+  margin-right: 400px;
+  
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+}
+
+article span {
+  margin-right: 200px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+
+span p{
+  overflow: auto;
+  background-color: slategray;
+  
+  resize: none;
+  height: 400px;
+  width: 550px;
+}
+
+body {
+  font-size: large;
+}
+
+
+ article img {
+  height: 200px;
+  width: 600px;
+  margin-top: 100px;
+  
+ }
+
+ #first {
+  background-color: slategrey;
+  
+  margin-bottom: 100px;
+  margin-top: 100px;
+ 
+ }
+
+ nav {
+  margin-left: 100px;
+  margin-right: 100px;
+ }
+
+ nav p{
+  background-color: slategray;
+ }
+
+ #second {
+  background-color: slategray;
+  margin-left: 200px;
+  margin-right: 200px;
+ }
 
 

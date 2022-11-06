@@ -6,6 +6,7 @@ let shopHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '
 Shop.allShops = [];
 
 let myForm = document.getElementById('newStore');
+let cookieHourlyList = document.getElementById('table');
 
 //Constructor
 function Shop(city, minCustomers, maxCustomers, avgCookiesPerCust){
@@ -27,7 +28,6 @@ Shop.prototype.getHourlyCookies = function() {
     this.totalCookies += cookieNumber;
   }
 };
-let cookieHourlyList = document.getElementById('table');
 Shop.prototype.render = function() {
   this.getHourlyCookies();
   let tableRow = document.createElement('tr');
@@ -48,9 +48,9 @@ Shop.prototype.render = function() {
 };
 
 function tableHeader() {
-  let table = document.getElementById('table');
+  // let table = document.getElementById('table');
   let tableHeadRow = document.createElement('tr');
-  table.appendChild(tableHeadRow);
+  cookieHourlyList.appendChild(tableHeadRow);
   let blankSpot = document.createElement('th');
   blankSpot.textContent = '  ';
   tableHeadRow.appendChild(blankSpot);
@@ -67,13 +67,13 @@ function tableHeader() {
 
 
 function tableFooter() {
-  let tableFoot = document.getElementById('table');
+  // let tableFoot = document.getElementById('table');
   let tableFootRow = document.createElement('tr');
   tableFootRow.id = 'tableRow1';
-  tableFoot.appendChild(tableFootRow);
+  cookieHourlyList.appendChild(tableFootRow);
   let totals = document.createElement('td');
   totals.textContent = 'Totals';
-  tableFoot.appendChild(totals);
+  tableFootRow.appendChild(totals);
   let grandTotalCookies = 0;
   for (let i = 0; i < shopHours.length; i++) {
     let totalHourlyCookies = 0;
@@ -83,11 +83,11 @@ function tableFooter() {
     }
     let totals1 = document.createElement('th');
     totals1.textContent = totalHourlyCookies;
-    tableFoot.appendChild(totals1);
+    tableFootRow.appendChild(totals1);
   }
   let totals2 = document.createElement('th');
   totals2.textContent = grandTotalCookies;
-  tableFoot.appendChild(totals2);
+  tableFootRow.appendChild(totals2);
 }
 
 
@@ -124,7 +124,8 @@ function handleSubmit(event) {
   let maxCustomers = event.target.maxCustomers.value;
   let avgCookiesPerCust = event.target.avgCookiesPerCust.value;
   let newStore = new Shop(city, minCustomers, maxCustomers, avgCookiesPerCust);
-  document.getElementById('tableRow1').remove();
+  let removeFooter = document.getElementById('tableRow1');
+  removeFooter.remove();
   newStore.render();
   myForm.reset();
   tableFooter();
